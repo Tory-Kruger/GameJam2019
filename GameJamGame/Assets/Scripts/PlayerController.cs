@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	[Header("Movement")]
 	public Vector3 gravity = Physics.gravity;
 	public float movSpeed = 20;
-	public float rotSpeed = 70;
+	public float rotSpeed = 130;
 	public float jmpForce = 250;
 
 	private CharacterController controller;
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 
 		Vector3 vForward = transform.forward * movInput;
 		Vector3 vUpward = Vector3.up * jmpInput + gravity;
-		Vector3 vUpLerp = Vector3.Lerp(velocity, vUpward, .25f);
+		Vector3 vUpLerp = Vector3.Lerp(new Vector3(0, velocity.y, 0), vUpward, .25f);
 
 		velocity = vForward + vUpLerp;
 

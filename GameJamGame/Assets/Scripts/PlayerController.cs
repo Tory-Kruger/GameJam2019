@@ -11,13 +11,21 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode forward = KeyCode.UpArrow;
 	public KeyCode backward = KeyCode.DownArrow;
 	public KeyCode jump = KeyCode.RightControl;
+	public KeyCode attack = KeyCode.RightShift;
 
 	[Header("Movement")]
-	public Vector3 gravity = Physics.gravity;
+	public float gravity = Physics.gravity.y;
 	public float movSpeed = 20;
 	public float rotSpeed = 130;
 	public float jmpForce = 500;
 	public float jmpSmoothTime = .25f;
+
+	[Header("Combat")]
+	public float attackRange = 1;
+	public float attackForce = 15;
+	public float attackJump = 2.5f;
+	public float attackDeceleration = 0.05f;
+	private Vector3 appliedAttackForce;
 
 	private CharacterController controller;
 
@@ -29,14 +37,28 @@ public class PlayerController : MonoBehaviour {
 
 	private float jmpVelocity;
 
+	private PlayerController otherPlayer;
+
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<CharacterController>();
 		velocity = Vector3.zero;
+
+		otherPlayer = new List<PlayerController>(FindObjectsOfType<PlayerController>()).Find(p => p != this);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		DoMovement();
+
+		if (Input.GetKeyDown(attack))
+		{
+			DoAttack();
+		}
+	}
+
+	void DoMovement()
+	{
 		// get input
 		rotInput = 0;
 		movInput = 0;
@@ -64,10 +86,13 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		// movement
+		appliedAttackForce = Vector3.LerpUnclamped(appliedAttackForce, Vector3.zero, attackDeceleration);
+		if (Vector3.Distance(appliedAttackForce, Vector3.zero) < .01f) { appliedAttackForce = Vector3.zero; }
+
 		transform.Rotate(Vector3.up, rotInput * Time.deltaTime);
 
 		Vector3 vForward = transform.forward * movInput;
-		Vector3 vUpward = Vector3.up * jmpInput + gravity;
+		Vector3 vUpward = Vector3.up * (jmpInput + gravity);
 		Vector3 vUpLerp = Vector3.zero;
 		vUpLerp.y = Mathf.SmoothDamp(velocity.y, vUpward.y, ref jmpVelocity, jmpSmoothTime);
 
@@ -75,8 +100,20 @@ public class PlayerController : MonoBehaviour {
 
 		velocity.x = Mathf.Clamp(velocity.x, -movSpeed, movSpeed);
 		velocity.z = Mathf.Clamp(velocity.z, -movSpeed, movSpeed);
-		velocity.y = Mathf.Clamp(velocity.y, gravity.y, jmpForce);
+		velocity.y = Mathf.Clamp(velocity.y, gravity, jmpForce);
 
-		controller.Move(velocity * Time.deltaTime);
+		controller.Move((velocity + appliedAttackForce) * Time.deltaTime);
+	}
+	
+	void DoAttack()
+	{
+		float distance = Vector3.Distance(transform.position, otherPlayer.transform.position) - (transform.localScale.x + otherPlayer.transform.localScale.x) / 2f;
+
+		if (distance <= attackRange)
+		{
+			Vector3 attackNormal = (otherPlayer.transform.position - transform.position).normalized * attackForce;
+			attackNormal.y += attackJump;
+			otherPlayer.appliedAttackForce = attackNormal;
+		}
 	}
 }

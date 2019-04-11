@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 135787003230850830}
   - component: {fileID: 114332713949848456}
   - component: {fileID: 143530061680600638}
+  - component: {fileID: 114928540843777458}
   - component: {fileID: 114083886259523706}
   m_Layer: 0
   m_Name: Player
@@ -1156,6 +1157,18 @@ MonoBehaviour:
   rotSpeed: 175
   jmpForce: 375
   jmpSmoothTime: 0.2
+--- !u!114 &114928540843777458
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1308082772422766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc7c7f0bb1a9e044992d1dfbcb82821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: 2
 --- !u!135 &135787003230850830
 SphereCollider:
   m_ObjectHideFlags: 1

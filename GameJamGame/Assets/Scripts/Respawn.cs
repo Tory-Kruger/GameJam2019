@@ -31,7 +31,6 @@ public class Respawn : MonoBehaviour {
 	private void Reset()
 	{
 		transform.position = _resetPos.position;
-		GetComponent<CharacterController>().transform.position = _resetPos.position;
 		timer = 0;
 	}
 }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33421260346969948}
   - component: {fileID: 23476340183383990}
   - component: {fileID: 64704958267401190}
+  - component: {fileID: 114253058168602182}
   m_Layer: 0
   m_Name: Plate_Basic
   m_TagString: Untagged
@@ -98,3 +99,14 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a03f661e51de7de4c8677dac7e1d8034, type: 3}
+--- !u!114 &114253058168602182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933377768998816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cde6eedd1c1604d957a39932b7d391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

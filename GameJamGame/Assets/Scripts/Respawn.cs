@@ -18,7 +18,7 @@ public class Respawn : MonoBehaviour {
 		if (!(Physics.Raycast(transform.position, Vector3.down, 10000.0f)) && timer < float.Epsilon)
 			timer = Time.time;
 
-		if ((timer - Time.time) > _respawnTime && timer > 0)
+		if ((Time.time - timer) > _respawnTime && timer > 0)
 			reset = true;
 
 		if (transform.position.y < _respawnHeight)

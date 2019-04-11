@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1165050012}
-  smoothTime: 0.04
+  smoothTime: 0.1
   slerpT: 0.1
 --- !u!1001 &131010688
 Prefab:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(ColorCaster))]
 public class PlayerController : MonoBehaviour {
 
 	[Header("Controls")]
@@ -22,9 +23,9 @@ public class PlayerController : MonoBehaviour {
 
 	[Header("Combat")]
 	public float attackRange = 1;
-	public float attackForce = 15;
+	public float attackForce = 20;
 	public float attackJump = 2.5f;
-	public float attackDeceleration = 0.05f;
+	public float attackDeceleration = 0.04f;
 	private Vector3 appliedAttackForce;
 
 	private CharacterController controller;
@@ -39,12 +40,15 @@ public class PlayerController : MonoBehaviour {
 
 	private PlayerController otherPlayer;
 
+	private ColorCaster colorCaster;
+	public Players PlayerTag { get { return colorCaster.playerTag; } }
+
 	// Use this for initialization
 	void Start () {
 		controller = GetComponent<CharacterController>();
 		velocity = Vector3.zero;
-
 		otherPlayer = new List<PlayerController>(FindObjectsOfType<PlayerController>()).Find(p => p != this);
+		colorCaster = GetComponent<ColorCaster>();
 	}
 	
 	// Update is called once per frame

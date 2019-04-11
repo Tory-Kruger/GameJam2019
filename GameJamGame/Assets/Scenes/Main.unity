@@ -5521,6 +5521,11 @@ Prefab:
       propertyPath: m_Name
       value: TURTLE1
       objectReference: {fileID: 0}
+    - target: {fileID: 137939305187793298, guid: d5b6dd87c5f17f5479e47d5b97fc5f67,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d00ad1e35c3417448a30f153bd314b71, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b6dd87c5f17f5479e47d5b97fc5f67, type: 2}
   m_IsPrefabAsset: 0
@@ -10396,6 +10401,11 @@ Prefab:
       propertyPath: left
       value: 97
       objectReference: {fileID: 0}
+    - target: {fileID: 137939305187793298, guid: d5b6dd87c5f17f5479e47d5b97fc5f67,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cf51d005edeaee488e1113167a7f5ed, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b6dd87c5f17f5479e47d5b97fc5f67, type: 2}
   m_IsPrefabAsset: 0

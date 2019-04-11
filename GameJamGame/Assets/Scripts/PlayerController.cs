@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour {
 	public float jmpSmoothTime = .25f;
 
 	[Header("Combat")]
-	public float attackRange = 1;
+	public float attackRange = 3;
 	public float attackForce = 20;
-	public float attackJump = 2.5f;
+	public float attackJump = 25f;
 	public float attackDeceleration = 0.04f;
 	private Vector3 appliedAttackForce;
 

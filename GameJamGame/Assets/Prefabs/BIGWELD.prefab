@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 143864273686132542}
   - component: {fileID: 114328288745935252}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: BIGWELD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,21 +14,17 @@ public class BlockColourer : MonoBehaviour {
 		gameManager = FindObjectOfType<GameManager>();
 		gameManager._blockCount++;
 	}
-	private void OnCollisionEnter(Collision collision)
-    {
-		if (collision.collider.tag == "Painter")
-		{
-			Players tag = collision.collider.GetComponent<MyTag>().player;
 
-			if (currentTag == tag) return;
+	public void ChangeColor(Players tag)
+	{
+		if (currentTag == tag) return;
 
-			// Notify GameManager of color Change
-			gameManager.ChangeColoredCount(currentTag, tag);
+		// Notify GameManager of color Change
+		gameManager.ChangeColoredCount(currentTag, tag);
 
 
-			// Set new Color according to tag
-			var color = gameManager.GetPlayerColor(tag);
-			GetComponent<Renderer>().material.color = color;
-		}
-    }
+		// Set new Color according to tag
+		var color = gameManager.GetPlayerColor(tag);
+		GetComponent<Renderer>().material.color = color;
+	}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Players
 {
-	P1,
+	P1 = 0,
 	P2,
 
 	NULL
@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour {
 	{
 		playerColors.Add(p1Color);
 		playerColors.Add(p2Color);
+
+		for (int i = 0; i <= (int)Players.NULL; ++i)
+		{
+			coloredBlocks.Add(0);
+		}
 	}
 	
 	// Update is called once per frame
@@ -37,8 +42,8 @@ public class GameManager : MonoBehaviour {
 
 	public void ChangeColoredCount(Players before, Players after)
 	{
-		coloredBlocks[(int)before]--;
-		coloredBlocks[(int)after]++;
+		coloredBlocks[(int)before] = coloredBlocks[(int)before] - 1;
+		coloredBlocks[(int)after] = coloredBlocks[(int)after] + 1;
 	}
 
 	public Color GetPlayerColor(Players player)

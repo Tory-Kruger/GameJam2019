@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour {
 
 				// Change Material
 				if(colorMaterials[(int)p.PlayerTag])
-					GetComponent<Renderer>().material = colorMaterials[(int)p.PlayerTag];
+					GetComponentInChildren<Renderer>().material = colorMaterials[(int)p.PlayerTag];
 			}
 		}
 	}

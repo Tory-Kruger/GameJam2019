@@ -90,9 +90,6 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		// movement
-		appliedAttackForce = Vector3.LerpUnclamped(appliedAttackForce, Vector3.zero, attackDeceleration);
-		if (Vector3.Distance(appliedAttackForce, Vector3.zero) < .01f) { appliedAttackForce = Vector3.zero; }
-
 		transform.Rotate(Vector3.up, rotInput * Time.deltaTime);
 
 		Vector3 vForward = transform.forward * movInput;
@@ -102,9 +99,8 @@ public class PlayerController : MonoBehaviour {
 
 		velocity = vForward + vUpLerp;
 
-		velocity.x = Mathf.Clamp(velocity.x, -movSpeed, movSpeed);
-		velocity.z = Mathf.Clamp(velocity.z, -movSpeed, movSpeed);
-		velocity.y = Mathf.Clamp(velocity.y, gravity, jmpForce);
+		appliedAttackForce = Vector3.LerpUnclamped(appliedAttackForce, Vector3.zero, attackDeceleration);
+		if (Vector3.Distance(appliedAttackForce, Vector3.zero) < .01f) { appliedAttackForce = Vector3.zero; }
 
 		controller.Move((velocity + appliedAttackForce) * Time.deltaTime);
 	}
@@ -115,9 +111,9 @@ public class PlayerController : MonoBehaviour {
 
 		if (distance <= attackRange)
 		{
-			Vector3 attackNormal = (otherPlayer.transform.position - transform.position).normalized * attackForce;
-			attackNormal.y += attackJump;
-			otherPlayer.appliedAttackForce = attackNormal;
+			Vector3 calculatedForce = (otherPlayer.transform.position - transform.position).normalized * attackForce;
+			calculatedForce.y = attackJump;
+			otherPlayer.appliedAttackForce = calculatedForce;
 		}
 	}
 }

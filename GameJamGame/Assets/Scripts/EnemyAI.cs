@@ -24,24 +24,19 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Wander();
+		// made it to destination
+		if (Vector3.Distance(transform.position, navMeshAgent.destination) < 1f)
+		{
+			NavMeshTriangulation data = NavMesh.CalculateTriangulation();
+			Vector3 vertex = data.vertices[Random.Range(0, data.vertices.Length)];
+			navMeshAgent.destination = vertex;
+		}
 
 		// collision with player
 		foreach (PlayerController p in players) {
-			if (Vector3.Distance(transform.position, p.transform.position) < range) {
+			if (Vector3.Distance(transform.position, p.transform.position) <= range) {
 				colorCaster.playerTag = p.PlayerTag;
 			}
 		}
-	}
-
-	void Wander() {
-		if (Vector3.Distance(transform.position, navMeshAgent.destination) > 1f) {
-			return;
-		}
-
-		NavMeshTriangulation data = NavMesh.CalculateTriangulation();
-
-		Vector3 vertex = data.vertices[Random.Range(0, data.vertices.Length)];
-		navMeshAgent.destination = vertex;
 	}
 }

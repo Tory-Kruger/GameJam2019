@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 appliedAttackForce;
 
 	[Space]
-	public Animation attackAnim;
+	public Animator animator;
 
 	private CharacterController controller;
 
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour {
 		otherPlayer = new List<PlayerController>(FindObjectsOfType<PlayerController>()).Find(p => p != this);
 		colorCaster = GetComponent<ColorCaster>();
 
-		if (!attackAnim)
+		if (!animator)
 		{
 			Debug.LogWarning("Player does not have an attack animation!", this);
 		}
@@ -124,9 +124,9 @@ public class PlayerController : MonoBehaviour {
 			otherPlayer.appliedAttackForce = calculatedForce;
 		}
 
-		if (attackAnim)
+		if (animator)
 		{
-			attackAnim.Play();
+			animator.SetTrigger("Attack");
 		}
 	}
 }

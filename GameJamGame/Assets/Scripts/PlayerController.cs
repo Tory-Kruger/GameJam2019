@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
 
 	[Space]
 	public Animator animator;
+	public AudioSource attackSound;
 
 	private CharacterController controller;
 
@@ -56,6 +57,11 @@ public class PlayerController : MonoBehaviour {
 		if (!animator)
 		{
 			Debug.LogWarning("Player does not have an attack animation!", this);
+		}
+
+		if (!attackSound)
+		{
+			Debug.LogWarning("Player doesn't have an AudioSource!", this);
 		}
 	}
 	
@@ -122,6 +128,7 @@ public class PlayerController : MonoBehaviour {
 			Vector3 calculatedForce = (otherPlayer.transform.position - transform.position).normalized * attackForce;
 			calculatedForce.y = attackJump;
 			otherPlayer.appliedAttackForce = calculatedForce;
+			attackSound.Play();
 		}
 
 		if (animator)

@@ -9,6 +9,9 @@ public class EnemyAI : MonoBehaviour {
 
 	public float range;
 
+	[Header("Materials")]
+	public Material[] colorMaterials = new Material[2];
+
 	private NavMeshAgent navMeshAgent;
 
 	private PlayerController[] players;
@@ -36,6 +39,10 @@ public class EnemyAI : MonoBehaviour {
 		foreach (PlayerController p in players) {
 			if (Vector3.Distance(transform.position, p.transform.position) <= range) {
 				colorCaster.playerTag = p.PlayerTag;
+
+				// Change Material
+				if(colorMaterials[(int)p.PlayerTag])
+					GetComponent<Renderer>().material = colorMaterials[(int)p.PlayerTag];
 			}
 		}
 	}

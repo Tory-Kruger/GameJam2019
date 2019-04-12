@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour {
 
 	[Header("Gameplay")]
 	public float roundTime = 90;
+	public WinCamera winCamera;
 	private float timer;
 
 	// Use this for initialization
@@ -46,6 +47,15 @@ public class GameManager : MonoBehaviour {
 		else
 		{
 			Debug.LogWarning("GameManager doesn't have a win screen!", this);
+		}
+
+		if (winCamera)
+		{
+			winCamera.gameObject.SetActive(false);
+		}
+		else
+		{
+			Debug.LogWarning("GameManager doesn't have a win camera!", this);
 		}
 
 		playerColors.Add(p1Color);
@@ -73,6 +83,13 @@ public class GameManager : MonoBehaviour {
 		{
 			timerText.text = "00";
 			if (winScreen) { winScreen.SetActive(true); }
+			if (winCamera) { winCamera.gameObject.SetActive(true); }
+			List<Camera> cameras = new List<Camera>(FindObjectsOfType<Camera>()).FindAll(cam => cam != winCamera);
+			foreach (Camera cam in cameras)
+			{
+				cam.enabled = false;
+			}
+			winCamera.camera.enabled = true;
 		}
 	}
 

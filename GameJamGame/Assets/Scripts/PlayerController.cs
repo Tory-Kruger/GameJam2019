@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour {
 			Vector3 calculatedForce = (otherPlayer.transform.position - transform.position).normalized * attackForce;
 			calculatedForce.y = attackJump;
 			otherPlayer.appliedAttackForce = calculatedForce;
-			attackSound.Play();
+            if (attackSound) { attackSound.Play(); }
 		}
 
 		if (animator)

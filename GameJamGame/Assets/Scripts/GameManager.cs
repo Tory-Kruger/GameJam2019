@@ -83,13 +83,17 @@ public class GameManager : MonoBehaviour {
 		{
 			timerText.text = "00";
 			if (winScreen) { winScreen.SetActive(true); }
-			if (winCamera) { winCamera.gameObject.SetActive(true); }
-			List<Camera> cameras = new List<Camera>(FindObjectsOfType<Camera>()).FindAll(cam => cam != winCamera);
-			foreach (Camera cam in cameras)
+
+			if (winCamera)
 			{
-				cam.enabled = false;
+				if (winCamera) { winCamera.gameObject.SetActive(true); }
+				List<Camera> cameras = new List<Camera>(FindObjectsOfType<Camera>()).FindAll(cam => cam != winCamera);
+				foreach (Camera cam in cameras)
+				{
+					cam.enabled = false;
+				}
+				winCamera.camera.enabled = true;
 			}
-			winCamera.camera.enabled = true;
 		}
 	}
 

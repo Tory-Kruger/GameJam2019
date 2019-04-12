@@ -8,6 +8,7 @@ public class WinScreen : MonoBehaviour {
 
 	public Text displayWinner;
 	public string winMessge;
+	public string drawMessage;
 
 	void OnEnable()
 	{
@@ -22,11 +23,11 @@ public class WinScreen : MonoBehaviour {
 		}
 		else if (p2 > p1)
 		{
-			displayWinner.text = "Player 2" + winMessge;
+			displayWinner.text = "Player 2 " + winMessge;
 		}
 		else
 		{
-			displayWinner.text = "DRAW!";
+			displayWinner.text = drawMessage;
 		}
 	}
 

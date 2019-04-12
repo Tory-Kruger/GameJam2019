@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour {
 	public float attackDeceleration = 0.04f;
 	private Vector3 appliedAttackForce;
 
+	[Space]
+	public Animation attackAnim;
+
 	private CharacterController controller;
 
 	private float movInput = 0;
@@ -49,6 +52,11 @@ public class PlayerController : MonoBehaviour {
 		velocity = Vector3.zero;
 		otherPlayer = new List<PlayerController>(FindObjectsOfType<PlayerController>()).Find(p => p != this);
 		colorCaster = GetComponent<ColorCaster>();
+
+		if (!attackAnim)
+		{
+			Debug.LogWarning("Player does not have an attack animation!", this);
+		}
 	}
 	
 	// Update is called once per frame
@@ -114,6 +122,11 @@ public class PlayerController : MonoBehaviour {
 			Vector3 calculatedForce = (otherPlayer.transform.position - transform.position).normalized * attackForce;
 			calculatedForce.y = attackJump;
 			otherPlayer.appliedAttackForce = calculatedForce;
+		}
+
+		if (attackAnim)
+		{
+			attackAnim.Play();
 		}
 	}
 }

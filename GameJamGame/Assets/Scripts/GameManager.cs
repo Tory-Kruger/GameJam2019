@@ -28,11 +28,26 @@ public class GameManager : MonoBehaviour {
 	public Text p2ScoreText;
 	public Text timerText;
 
+	[Space]
+	public GameObject winScreen;
+
+	[Header("Gameplay")]
+	public float roundTime = 90;
 	private float timer;
 
 	// Use this for initialization
 	void Start ()
 	{
+		timer = roundTime;
+		if (winScreen)
+		{
+			winScreen.SetActive(false);
+		}
+		else
+		{
+			Debug.LogWarning("GameManager doesn't have a win screen!", this);
+		}
+
 		playerColors.Add(p1Color);
 		playerColors.Add(p2Color);
 
@@ -46,11 +61,19 @@ public class GameManager : MonoBehaviour {
 	void Update ()
 	{
 		// Update UI?
-		p1ScoreText.text = coloredBlocks[0].ToString();
-		p2ScoreText.text = coloredBlocks[1].ToString();
+		if (timer > 0)
+		{
+			p1ScoreText.text = coloredBlocks[0].ToString();
+			p2ScoreText.text = coloredBlocks[1].ToString();
 
-		timer += Time.deltaTime;
-		timerText.text = ((int)timer).ToString("00");
+			timer -= Time.deltaTime;
+			timerText.text = ((int)timer).ToString("00");
+		}
+		else
+		{
+			timerText.text = "00";
+			if (winScreen) { winScreen.SetActive(true); }
+		}
 	}
 
 	public void ChangeColoredCount(Players before, Players after)

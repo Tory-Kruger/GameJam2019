@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
 		p2ScoreText.text = coloredBlocks[1].ToString();
 
 		timer += Time.deltaTime;
-		timerText.text = ((int)timer).ToString();
+		timerText.text = ((int)timer).ToString("00");
 	}
 
 	public void ChangeColoredCount(Players before, Players after)

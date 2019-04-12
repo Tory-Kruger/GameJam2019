@@ -14,20 +14,23 @@ public class WinScreen : MonoBehaviour {
 	{
 		// figure out who won
 		GameManager gm = FindObjectOfType<GameManager>();
-		int p1 = gm.coloredBlocks[0];
-		int p2 = gm.coloredBlocks[1];
+		if (gm.coloredBlocks.Count > 0)
+		{
+			int p1 = gm.coloredBlocks[0];
+			int p2 = gm.coloredBlocks[1];
 
-		if (p1 > p2)
-		{
-			displayWinner.text = "Player 1 " + winMessge;
-		}
-		else if (p2 > p1)
-		{
-			displayWinner.text = "Player 2 " + winMessge;
-		}
-		else
-		{
-			displayWinner.text = drawMessage;
+			if (p1 > p2)
+			{
+				displayWinner.text = "Player 1 " + winMessge;
+			}
+			else if (p2 > p1)
+			{
+				displayWinner.text = "Player 2 " + winMessge;
+			}
+			else
+			{
+				displayWinner.text = drawMessage;
+			}
 		}
 	}
 

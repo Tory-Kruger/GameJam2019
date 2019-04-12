@@ -28,9 +28,12 @@ public class PlayerController : MonoBehaviour {
 	public float attackDeceleration = 0.04f;
 	private Vector3 appliedAttackForce;
 
+	[Header("SFX")]
+	public AudioSource jumpSound;
+	public AudioSource attackSound;
+
 	[Space]
 	public Animator animator;
-	public AudioSource attackSound;
 
 	private CharacterController controller;
 
@@ -61,7 +64,12 @@ public class PlayerController : MonoBehaviour {
 
 		if (!attackSound)
 		{
-			Debug.LogWarning("Player doesn't have an AudioSource!", this);
+			Debug.LogWarning("Player doesn't have an attack sound!", this);
+		}
+
+		if (!jumpSound)
+		{
+			Debug.LogWarning("Player doesn't have a jump sound!", this);
 		}
 	}
 	
@@ -101,6 +109,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown(jump) && controller.isGrounded)
 		{
 			jmpInput = jmpForce;
+			if (jumpSound) { jumpSound.Play(); }
 		}
 
 		// movement

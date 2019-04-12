@@ -5900,15 +5900,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4113902023192776, guid: 526510d097413e645bb46f8001054681, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -400
+      value: -401.22
       objectReference: {fileID: 0}
     - target: {fileID: 4113902023192776, guid: 526510d097413e645bb46f8001054681, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -243.05081
+      value: -294.57
       objectReference: {fileID: 0}
     - target: {fileID: 4113902023192776, guid: 526510d097413e645bb46f8001054681, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4113902023192776, guid: 526510d097413e645bb46f8001054681, type: 2}
       propertyPath: m_LocalRotation.x
@@ -8074,6 +8074,16 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272966244370842, guid: d5b6dd87c5f17f5479e47d5b97fc5f67,
+        type: 2}
+      propertyPath: jump
+      value: 93
+      objectReference: {fileID: 0}
+    - target: {fileID: 114272966244370842, guid: d5b6dd87c5f17f5479e47d5b97fc5f67,
+        type: 2}
+      propertyPath: attack
+      value: 91
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95658009667557944, guid: d5b6dd87c5f17f5479e47d5b97fc5f67, type: 2}
@@ -15471,7 +15481,7 @@ Prefab:
     - target: {fileID: 114272966244370842, guid: d5b6dd87c5f17f5479e47d5b97fc5f67,
         type: 2}
       propertyPath: jump
-      value: 306
+      value: 118
       objectReference: {fileID: 0}
     - target: {fileID: 114272966244370842, guid: d5b6dd87c5f17f5479e47d5b97fc5f67,
         type: 2}
@@ -15491,7 +15501,7 @@ Prefab:
     - target: {fileID: 114272966244370842, guid: d5b6dd87c5f17f5479e47d5b97fc5f67,
         type: 2}
       propertyPath: attack
-      value: 304
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 114272966244370842, guid: d5b6dd87c5f17f5479e47d5b97fc5f67,
         type: 2}

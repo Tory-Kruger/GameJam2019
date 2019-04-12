@@ -26,5 +26,6 @@ public class BlockColourer : MonoBehaviour {
 		// Set new Color according to tag
 		var color = gameManager.GetPlayerColor(tag);
 		GetComponent<Renderer>().material.color = color;
+		currentTag = tag;
 	}
 }

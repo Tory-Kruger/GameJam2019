@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Players
 {
@@ -22,6 +23,13 @@ public class GameManager : MonoBehaviour {
 	public Color p1Color;
 	public Color p2Color;
 
+	[Header("UI Objects")]
+	public Text p1ScoreText;
+	public Text p2ScoreText;
+	public Text timerText;
+
+	private float timer;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -38,6 +46,11 @@ public class GameManager : MonoBehaviour {
 	void Update ()
 	{
 		// Update UI?
+		p1ScoreText.text = coloredBlocks[0].ToString();
+		p2ScoreText.text = coloredBlocks[1].ToString();
+
+		timer += Time.deltaTime;
+		timerText.text = ((int)timer).ToString();
 	}
 
 	public void ChangeColoredCount(Players before, Players after)

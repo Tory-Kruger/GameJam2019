@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode attack = KeyCode.RightShift;
 
 	[Header("Movement")]
-	public float gravity = Physics.gravity.y;
+	public float gravity = -9.81f;
 	public float movSpeed = 20;
 	public float rotSpeed = 130;
 	public float jmpForce = 500;

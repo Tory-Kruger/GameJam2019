@@ -27,5 +27,8 @@ public class BlockColourer : MonoBehaviour {
 		var color = gameManager.GetPlayerColor(tag);
 		GetComponent<Renderer>().material.color = color;
 		currentTag = tag;
+
+		if (gameManager.colorChangeAudio.Length > (int)tag)
+			gameManager.colorChangeAudio[(int)tag].Play();
 	}
 }

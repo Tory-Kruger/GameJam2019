@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour {
 	public Color p1Color;
 	public Color p2Color;
 
+	[Header("Audio")]
+	public AudioSource[] colorChangeAudio = new AudioSource[2]; 
+
 	[Header("UI Objects")]
 	public Text p1ScoreText;
 	public Text p2ScoreText;
@@ -35,6 +38,8 @@ public class GameManager : MonoBehaviour {
 	public float roundTime = 90;
 	public WinCamera winCamera;
 	private float timer;
+
+
 
 	// Use this for initialization
 	void Start ()
